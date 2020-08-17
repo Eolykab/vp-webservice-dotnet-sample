@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://virtualpostman.co.za/vp/webservices/Auth/v3/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="AuthService" targetNamespace="http://virtualpostman.co.za/vp/webservices/Auth/v3/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://virtualpostman.co.za/vp/webservices/Auth/v3/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="login" type="tns:login" />
+      <xs:element name="loginResponse" type="tns:loginResponse" />
+      <xs:complexType name="login">
+        <xs:sequence>
+          <xs:element name="username" type="xs:string" />
+          <xs:element name="password" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="loginResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sessionId" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Authorization" type="tns:Authorization" />
+      <xs:complexType name="Authorization">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Authentication" type="tns:Authentication" />
+      <xs:complexType name="Authentication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="parameters" element="tns:loginResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizationFault">
+    <wsdl:part name="AuthorizationFault" element="tns:Authorization" />
+  </wsdl:message>
+  <wsdl:message name="login">
+    <wsdl:part name="parameters" element="tns:login" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticationFault">
+    <wsdl:part name="AuthenticationFault" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:portType name="Auth">
+    <wsdl:operation name="login">
+      <wsdl:input name="login" message="tns:login" />
+      <wsdl:output name="loginResponse" message="tns:loginResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthServiceSoapBinding" type="tns:Auth">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="login">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="login">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="loginResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthService">
+    <wsdl:port name="AuthPort" binding="tns:AuthServiceSoapBinding">
+      <soap12:address location="https://poc.virtualpostman.co.za/external/webservices/SOAP/Auth-v3.0" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

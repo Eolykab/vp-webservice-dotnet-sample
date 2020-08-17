@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://virtualpostman.co.za/vp/webservices/DocumentTasks/v1/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="DocumentTasksService" targetNamespace="http://virtualpostman.co.za/vp/webservices/DocumentTasks/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://virtualpostman.co.za/vp/webservices/DocumentTasks/v1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getNextDocumentInTaskQueue" type="tns:getNextDocumentInTaskQueue" />
+      <xs:element name="getNextDocumentInTaskQueueResponse" type="tns:getNextDocumentInTaskQueueResponse" />
+      <xs:element name="setDocumentProcessedInTaskQueueFail" type="tns:setDocumentProcessedInTaskQueueFail" />
+      <xs:element name="setDocumentProcessedInTaskQueueFailResponse" type="tns:setDocumentProcessedInTaskQueueFailResponse" />
+      <xs:element name="setDocumentProcessedInTaskQueueSuccess" type="tns:setDocumentProcessedInTaskQueueSuccess" />
+      <xs:element name="setDocumentProcessedInTaskQueueSuccessResponse" type="tns:setDocumentProcessedInTaskQueueSuccessResponse" />
+      <xs:complexType name="getNextDocumentInTaskQueue">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="queueName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getNextDocumentInTaskQueueResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="documentQueueInformation" type="tns:DocumentQueueEntryInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DocumentQueueEntryInformation">
+        <xs:all>
+          <xs:element name="documentQueueEntryId" type="xs:long" />
+          <xs:element name="queueId" type="xs:long" />
+          <xs:element name="documenId" type="xs:long" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="setDocumentProcessedInTaskQueueFail">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="queueEntryId" type="xs:long" />
+          <xs:element name="errorMessage" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setDocumentProcessedInTaskQueueFailResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="setDocumentProcessedInTaskQueueSuccess">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="queueEntryId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setDocumentProcessedInTaskQueueSuccessResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="Authentication" type="tns:Authentication" />
+      <xs:complexType name="Authentication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InvalidArgument" type="tns:InvalidArgument" />
+      <xs:complexType name="InvalidArgument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Authorization" type="tns:Authorization" />
+      <xs:complexType name="Authorization">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="setDocumentProcessedInTaskQueueSuccessResponse">
+    <wsdl:part name="parameters" element="tns:setDocumentProcessedInTaskQueueSuccessResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidArgumentFault">
+    <wsdl:part name="InvalidArgumentFault" element="tns:InvalidArgument" />
+  </wsdl:message>
+  <wsdl:message name="setDocumentProcessedInTaskQueueSuccess">
+    <wsdl:part name="parameters" element="tns:setDocumentProcessedInTaskQueueSuccess" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizationFault">
+    <wsdl:part name="AuthorizationFault" element="tns:Authorization" />
+  </wsdl:message>
+  <wsdl:message name="setDocumentProcessedInTaskQueueFailResponse">
+    <wsdl:part name="parameters" element="tns:setDocumentProcessedInTaskQueueFailResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticationFault">
+    <wsdl:part name="AuthenticationFault" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="getNextDocumentInTaskQueue">
+    <wsdl:part name="parameters" element="tns:getNextDocumentInTaskQueue" />
+  </wsdl:message>
+  <wsdl:message name="setDocumentProcessedInTaskQueueFail">
+    <wsdl:part name="parameters" element="tns:setDocumentProcessedInTaskQueueFail" />
+  </wsdl:message>
+  <wsdl:message name="getNextDocumentInTaskQueueResponse">
+    <wsdl:part name="parameters" element="tns:getNextDocumentInTaskQueueResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DocumentTasks">
+    <wsdl:operation name="getNextDocumentInTaskQueue">
+      <wsdl:input name="getNextDocumentInTaskQueue" message="tns:getNextDocumentInTaskQueue" />
+      <wsdl:output name="getNextDocumentInTaskQueueResponse" message="tns:getNextDocumentInTaskQueueResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProcessedInTaskQueueFail">
+      <wsdl:input name="setDocumentProcessedInTaskQueueFail" message="tns:setDocumentProcessedInTaskQueueFail" />
+      <wsdl:output name="setDocumentProcessedInTaskQueueFailResponse" message="tns:setDocumentProcessedInTaskQueueFailResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProcessedInTaskQueueSuccess">
+      <wsdl:input name="setDocumentProcessedInTaskQueueSuccess" message="tns:setDocumentProcessedInTaskQueueSuccess" />
+      <wsdl:output name="setDocumentProcessedInTaskQueueSuccessResponse" message="tns:setDocumentProcessedInTaskQueueSuccessResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DocumentTasksServiceSoapBinding" type="tns:DocumentTasks">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getNextDocumentInTaskQueue">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getNextDocumentInTaskQueue">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getNextDocumentInTaskQueueResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProcessedInTaskQueueFail">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="setDocumentProcessedInTaskQueueFail">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setDocumentProcessedInTaskQueueFailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setDocumentProcessedInTaskQueueSuccess">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="setDocumentProcessedInTaskQueueSuccess">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setDocumentProcessedInTaskQueueSuccessResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocumentTasksService">
+    <wsdl:port name="DocumentTasksPort" binding="tns:DocumentTasksServiceSoapBinding">
+      <soap:address location="https://poc.virtualpostman.co.za/external/webservices/SOAP/DocumentTasks-v1.0" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
