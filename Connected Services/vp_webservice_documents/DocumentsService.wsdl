@@ -8,6 +8,8 @@
       <xs:element name="deleteDocumentResponse" type="tns:deleteDocumentResponse" />
       <xs:element name="findDocuments" type="tns:findDocuments" />
       <xs:element name="findDocumentsResponse" type="tns:findDocumentsResponse" />
+      <xs:element name="getDerivedDocuments" type="tns:getDerivedDocuments" />
+      <xs:element name="getDerivedDocumentsResponse" type="tns:getDerivedDocumentsResponse" />
       <xs:element name="getDocument" type="tns:getDocument" />
       <xs:element name="getDocumentArchiveUserName" type="tns:getDocumentArchiveUserName" />
       <xs:element name="getDocumentArchiveUserNameResponse" type="tns:getDocumentArchiveUserNameResponse" />
@@ -159,6 +161,17 @@
           <xs:element minOccurs="0" name="documentContent" type="tns:DocumentContent" />
         </xs:sequence>
       </xs:complexType>
+      <xs:complexType name="getDerivedDocuments">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDerivedDocumentsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="sourceDocument" type="tns:document" />
+        </xs:sequence>
+      </xs:complexType>
       <xs:complexType name="getDocumentArchiveUserName">
         <xs:sequence>
           <xs:element name="sessionId" type="xs:string" />
@@ -259,6 +272,9 @@
   <wsdl:message name="AuthenticationFault">
     <wsdl:part name="AuthenticationFault" element="tns:Authentication" />
   </wsdl:message>
+  <wsdl:message name="getDerivedDocumentsResponse">
+    <wsdl:part name="parameters" element="tns:getDerivedDocumentsResponse" />
+  </wsdl:message>
   <wsdl:message name="getDocumentArchiveUserName">
     <wsdl:part name="parameters" element="tns:getDocumentArchiveUserName" />
   </wsdl:message>
@@ -303,6 +319,9 @@
   </wsdl:message>
   <wsdl:message name="getDocumentContent">
     <wsdl:part name="parameters" element="tns:getDocumentContent" />
+  </wsdl:message>
+  <wsdl:message name="getDerivedDocuments">
+    <wsdl:part name="parameters" element="tns:getDerivedDocuments" />
   </wsdl:message>
   <wsdl:message name="InputOutputFault">
     <wsdl:part name="InputOutputFault" element="tns:InputOutput" />
@@ -383,6 +402,13 @@
       <wsdl:output name="getDocumentContentResponse" message="tns:getDocumentContentResponse" />
       <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
       <wsdl:fault name="InputOutputFault" message="tns:InputOutputFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDerivedDocuments">
+      <wsdl:input name="getDerivedDocuments" message="tns:getDerivedDocuments" />
+      <wsdl:output name="getDerivedDocumentsResponse" message="tns:getDerivedDocumentsResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
       <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
       <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
     </wsdl:operation>
@@ -582,6 +608,24 @@
         <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
       </wsdl:fault>
     </wsdl:operation>
+    <wsdl:operation name="getDerivedDocuments">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDerivedDocuments">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDerivedDocumentsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
     <wsdl:operation name="getDocumentArchiveUserName">
       <soap12:operation soapAction="" style="document" />
       <wsdl:input name="getDocumentArchiveUserName">
@@ -642,7 +686,7 @@
   </wsdl:binding>
   <wsdl:service name="DocumentsService">
     <wsdl:port name="DocumentsPort" binding="tns:DocumentsServiceSoapBinding">
-      <soap12:address location="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.5" />
+      <soap12:address location="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.6" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

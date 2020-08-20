@@ -42,6 +42,17 @@ namespace vp_webservice_dotnet_sample
                 {
                     Console.WriteLine("Index name : " + iv.indexName + " with value : " + iv.indexValue1);
                 }
+                Console.WriteLine("Getting derived documents please wait...");
+                document[] listDocuments = documentsClient.getDerivedDocuments(sessionId, entryInformation.documenId);
+                foreach(document d in listDocuments)
+                {
+                    Console.WriteLine("Document Content Type : " + d.contentType);
+                    Console.WriteLine("Document Archive Date : " + d.archiveDate);
+                    Console.WriteLine("Document Original Name : " + d.originalFileName);
+                    Console.WriteLine("Document Node name : " + d.nodeName);
+                }
+
+
 
             }
             Console.ReadLine();

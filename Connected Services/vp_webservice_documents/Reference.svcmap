@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1e8bec37-b286-4cb9-8889-63d66612c4c2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3b68cf1c-59fc-433d-90c6-f96df1087f19" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,10 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.5?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.6?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DocumentsService.wsdl" MetadataType="Wsdl" ID="e9934b95-ded7-4c5f-b0ef-79cc9bdf958b" SourceId="1" SourceUrl="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.5?wsdl" />
+    <MetadataFile FileName="DocumentsService.wsdl" MetadataType="Wsdl" ID="298bbe0a-c068-468b-b55e-91c447ed62ca" SourceId="1" SourceUrl="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.6?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

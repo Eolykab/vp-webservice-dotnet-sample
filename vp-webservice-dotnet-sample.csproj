@@ -85,6 +85,9 @@
     <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.findDocumentsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentArchiveUserNameResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

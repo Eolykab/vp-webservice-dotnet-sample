@@ -298,6 +298,18 @@ namespace vp_webservice_dotnet_sample.vp_webservice_documents {
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         System.Threading.Tasks.Task<vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentContentResponse> getDocumentContentAsync(vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentContent request);
         
+        // CODEGEN: Parameter 'sourceDocument' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        [System.ServiceModel.FaultContractAttribute(typeof(vp_webservice_dotnet_sample.vp_webservice_documents.Authorization), Action="", Name="Authorization")]
+        [System.ServiceModel.FaultContractAttribute(typeof(vp_webservice_dotnet_sample.vp_webservice_documents.InvalidArgument), Action="", Name="InvalidArgument")]
+        [System.ServiceModel.FaultContractAttribute(typeof(vp_webservice_dotnet_sample.vp_webservice_documents.Authentication), Action="", Name="Authentication")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="sourceDocument")]
+        vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse getDerivedDocuments(vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
+        System.Threading.Tasks.Task<vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse> getDerivedDocumentsAsync(vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments request);
+        
         // CODEGEN: Parameter 'archiveUserName' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="", ReplyAction="*")]
         [System.ServiceModel.FaultContractAttribute(typeof(vp_webservice_dotnet_sample.vp_webservice_documents.Authorization), Action="", Name="Authorization")]
@@ -950,6 +962,47 @@ namespace vp_webservice_dotnet_sample.vp_webservice_documents {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getDerivedDocuments", WrapperNamespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", IsWrapped=true)]
+    public partial class getDerivedDocuments {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string sessionId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public long documentId;
+        
+        public getDerivedDocuments() {
+        }
+        
+        public getDerivedDocuments(string sessionId, long documentId) {
+            this.sessionId = sessionId;
+            this.documentId = documentId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getDerivedDocumentsResponse", WrapperNamespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", IsWrapped=true)]
+    public partial class getDerivedDocumentsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("sourceDocument", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public vp_webservice_dotnet_sample.vp_webservice_documents.document[] sourceDocument;
+        
+        public getDerivedDocumentsResponse() {
+        }
+        
+        public getDerivedDocumentsResponse(vp_webservice_dotnet_sample.vp_webservice_documents.document[] sourceDocument) {
+            this.sourceDocument = sourceDocument;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getDocumentArchiveUserName", WrapperNamespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/", IsWrapped=true)]
     public partial class getDocumentArchiveUserName {
         
@@ -1385,6 +1438,31 @@ namespace vp_webservice_dotnet_sample.vp_webservice_documents {
             inValue.sessionId = sessionId;
             inValue.documentId = documentId;
             return ((vp_webservice_dotnet_sample.vp_webservice_documents.Documents)(this)).getDocumentContentAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse vp_webservice_dotnet_sample.vp_webservice_documents.Documents.getDerivedDocuments(vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments request) {
+            return base.Channel.getDerivedDocuments(request);
+        }
+        
+        public vp_webservice_dotnet_sample.vp_webservice_documents.document[] getDerivedDocuments(string sessionId, long documentId) {
+            vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments inValue = new vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments();
+            inValue.sessionId = sessionId;
+            inValue.documentId = documentId;
+            vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse retVal = ((vp_webservice_dotnet_sample.vp_webservice_documents.Documents)(this)).getDerivedDocuments(inValue);
+            return retVal.sourceDocument;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse> vp_webservice_dotnet_sample.vp_webservice_documents.Documents.getDerivedDocumentsAsync(vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments request) {
+            return base.Channel.getDerivedDocumentsAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocumentsResponse> getDerivedDocumentsAsync(string sessionId, long documentId) {
+            vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments inValue = new vp_webservice_dotnet_sample.vp_webservice_documents.getDerivedDocuments();
+            inValue.sessionId = sessionId;
+            inValue.documentId = documentId;
+            return ((vp_webservice_dotnet_sample.vp_webservice_documents.Documents)(this)).getDerivedDocumentsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
