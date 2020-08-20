@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\vp_webservice_documents\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\vp_webservice_documenttasks\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -62,6 +67,52 @@
     <None Include="App.config" />
     <None Include="Connected Services\vp_webservice_auth\AuthService.wsdl" />
     <None Include="Connected Services\vp_webservice_auth\vp_webservice_dotnet_sample.vp_webservice_auth.loginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\DocumentsService.wsdl" />
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.canConvertDocumentToPdfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.deleteDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.document.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.DocumentContent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.findDocumentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentArchiveUserNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentContentAsImageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentContentAsPdfResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentContentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getDocumentViewKeyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getMultipleDocumentsViewKeyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.getSourceDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.setSourceDocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\vp_webservice_documents\vp_webservice_dotnet_sample.vp_webservice_documents.ViewKeyInformation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\vp_webservice_documenttasks\DocumentTasksService.wsdl" />
@@ -83,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\vp_webservice_auth\" />
+    <WCFMetadataStorage Include="Connected Services\vp_webservice_documents\" />
     <WCFMetadataStorage Include="Connected Services\vp_webservice_documenttasks\" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +157,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\vp_webservice_documenttasks\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\vp_webservice_documents\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\vp_webservice_documents\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\vp_webservice_documents\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

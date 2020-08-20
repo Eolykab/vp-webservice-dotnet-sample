@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:tns="http://virtualpostman.co.za/vp/webservices/Documents/v1/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="DocumentsService" targetNamespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://virtualpostman.co.za/vp/webservices/Documents/v1/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="canConvertDocumentToPdf" type="tns:canConvertDocumentToPdf" />
+      <xs:element name="canConvertDocumentToPdfResponse" type="tns:canConvertDocumentToPdfResponse" />
+      <xs:element name="deleteDocument" type="tns:deleteDocument" />
+      <xs:element name="deleteDocumentResponse" type="tns:deleteDocumentResponse" />
+      <xs:element name="findDocuments" type="tns:findDocuments" />
+      <xs:element name="findDocumentsResponse" type="tns:findDocumentsResponse" />
+      <xs:element name="getDocument" type="tns:getDocument" />
+      <xs:element name="getDocumentArchiveUserName" type="tns:getDocumentArchiveUserName" />
+      <xs:element name="getDocumentArchiveUserNameResponse" type="tns:getDocumentArchiveUserNameResponse" />
+      <xs:element name="getDocumentContent" type="tns:getDocumentContent" />
+      <xs:element name="getDocumentContentAsImage" type="tns:getDocumentContentAsImage" />
+      <xs:element name="getDocumentContentAsImageResponse" type="tns:getDocumentContentAsImageResponse" />
+      <xs:element name="getDocumentContentAsPdf" type="tns:getDocumentContentAsPdf" />
+      <xs:element name="getDocumentContentAsPdfResponse" type="tns:getDocumentContentAsPdfResponse" />
+      <xs:element name="getDocumentContentResponse" type="tns:getDocumentContentResponse" />
+      <xs:element name="getDocumentResponse" type="tns:getDocumentResponse" />
+      <xs:element name="getDocumentViewKey" type="tns:getDocumentViewKey" />
+      <xs:element name="getDocumentViewKeyResponse" type="tns:getDocumentViewKeyResponse" />
+      <xs:element name="getMultipleDocumentsViewKey" type="tns:getMultipleDocumentsViewKey" />
+      <xs:element name="getMultipleDocumentsViewKeyResponse" type="tns:getMultipleDocumentsViewKeyResponse" />
+      <xs:element name="getSourceDocument" type="tns:getSourceDocument" />
+      <xs:element name="getSourceDocumentResponse" type="tns:getSourceDocumentResponse" />
+      <xs:element name="setSourceDocument" type="tns:setSourceDocument" />
+      <xs:element name="setSourceDocumentResponse" type="tns:setSourceDocumentResponse" />
+      <xs:complexType name="getMultipleDocumentsViewKey">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element maxOccurs="unbounded" name="documentId" type="xs:long" />
+          <xs:element minOccurs="0" name="timeoutSeconds" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getMultipleDocumentsViewKeyResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="viewKeyInformation" type="tns:ViewKeyInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ViewKeyInformation">
+        <xs:all>
+          <xs:element name="urlPrefix" type="xs:string" />
+          <xs:element name="viewKey" type="xs:string" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="findDocuments">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="nameName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="indexValues" type="tns:indexValue" />
+          <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
+          <xs:element name="pagingOffset" type="xs:int" />
+          <xs:element name="pagingLimit" type="xs:int" />
+          <xs:element minOccurs="0" name="sortIndexName" type="xs:string" />
+          <xs:element name="sortDescending" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="indexValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="indexName" type="xs:string" />
+          <xs:element minOccurs="0" name="indexValue" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findDocumentsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:document" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="document">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long" />
+          <xs:element minOccurs="0" name="nodeName" type="xs:string" />
+          <xs:element minOccurs="0" name="originalFileName" type="xs:string" />
+          <xs:element minOccurs="0" name="contentType" type="xs:string" />
+          <xs:element minOccurs="0" name="archiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="indexValues" nillable="true" type="tns:indexValue" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getSourceDocument">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getSourceDocumentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="sourceDocument" type="tns:document" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocument">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="document" type="tns:document" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteDocument">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteDocumentResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="getDocumentContentAsPdf">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentContentAsPdfResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="documentContent" type="tns:DocumentContent" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="DocumentContent">
+        <xs:all>
+          <xs:element name="mimeType" type="xs:string" />
+          <xs:element name="data" type="xs:base64Binary" />
+        </xs:all>
+      </xs:complexType>
+      <xs:complexType name="getDocumentViewKey">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+          <xs:element minOccurs="0" name="timeoutSeconds" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentViewKeyResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="viewKeyInformation" type="tns:ViewKeyInformation" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setSourceDocument">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+          <xs:element name="sourceDocumentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="setSourceDocumentResponse">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:complexType name="getDocumentContent">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentContentResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="documentContent" type="tns:DocumentContent" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentArchiveUserName">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentArchiveUserNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="archiveUserName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentContentAsImage">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+          <xs:element name="imageFormat" type="tns:imageFormat" />
+          <xs:element name="colorMode" type="tns:colorMode" />
+          <xs:element name="dpi" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getDocumentContentAsImageResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="documentImages" type="tns:DocumentContent" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="canConvertDocumentToPdf">
+        <xs:sequence>
+          <xs:element name="sessionId" type="xs:string" />
+          <xs:element name="documentId" type="xs:long" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="canConvertDocumentToPdfResponse">
+        <xs:sequence>
+          <xs:element name="canConvertToPdf" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:simpleType name="imageFormat">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="JPEG" />
+          <xs:enumeration value="PNG" />
+          <xs:enumeration value="TIFF" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="colorMode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="NO_RESTRICTION" />
+          <xs:enumeration value="GRAYSCALE" />
+          <xs:enumeration value="BLACK_AND_WHITE" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="Authorization" type="tns:Authorization" />
+      <xs:complexType name="Authorization">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Authentication" type="tns:Authentication" />
+      <xs:complexType name="Authentication">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InvalidArgument" type="tns:InvalidArgument" />
+      <xs:complexType name="InvalidArgument">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InputOutput" type="tns:InputOutput" />
+      <xs:complexType name="InputOutput">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getMultipleDocumentsViewKey">
+    <wsdl:part name="parameters" element="tns:getMultipleDocumentsViewKey" />
+  </wsdl:message>
+  <wsdl:message name="findDocuments">
+    <wsdl:part name="parameters" element="tns:findDocuments" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentViewKeyResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentViewKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthorizationFault">
+    <wsdl:part name="AuthorizationFault" element="tns:Authorization" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocument">
+    <wsdl:part name="parameters" element="tns:deleteDocument" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContentAsPdf">
+    <wsdl:part name="parameters" element="tns:getDocumentContentAsPdf" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentViewKey">
+    <wsdl:part name="parameters" element="tns:getDocumentViewKey" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticationFault">
+    <wsdl:part name="AuthenticationFault" element="tns:Authentication" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentArchiveUserName">
+    <wsdl:part name="parameters" element="tns:getDocumentArchiveUserName" />
+  </wsdl:message>
+  <wsdl:message name="canConvertDocumentToPdf">
+    <wsdl:part name="parameters" element="tns:canConvertDocumentToPdf" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentArchiveUserNameResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentArchiveUserNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSourceDocumentResponse">
+    <wsdl:part name="parameters" element="tns:getSourceDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContentResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContentAsImageResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentContentAsImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="canConvertDocumentToPdfResponse">
+    <wsdl:part name="parameters" element="tns:canConvertDocumentToPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSourceDocument">
+    <wsdl:part name="parameters" element="tns:getSourceDocument" />
+  </wsdl:message>
+  <wsdl:message name="getDocument">
+    <wsdl:part name="parameters" element="tns:getDocument" />
+  </wsdl:message>
+  <wsdl:message name="deleteDocumentResponse">
+    <wsdl:part name="parameters" element="tns:deleteDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMultipleDocumentsViewKeyResponse">
+    <wsdl:part name="parameters" element="tns:getMultipleDocumentsViewKeyResponse" />
+  </wsdl:message>
+  <wsdl:message name="setSourceDocument">
+    <wsdl:part name="parameters" element="tns:setSourceDocument" />
+  </wsdl:message>
+  <wsdl:message name="setSourceDocumentResponse">
+    <wsdl:part name="parameters" element="tns:setSourceDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContent">
+    <wsdl:part name="parameters" element="tns:getDocumentContent" />
+  </wsdl:message>
+  <wsdl:message name="InputOutputFault">
+    <wsdl:part name="InputOutputFault" element="tns:InputOutput" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContentAsImage">
+    <wsdl:part name="parameters" element="tns:getDocumentContentAsImage" />
+  </wsdl:message>
+  <wsdl:message name="getDocumentContentAsPdfResponse">
+    <wsdl:part name="parameters" element="tns:getDocumentContentAsPdfResponse" />
+  </wsdl:message>
+  <wsdl:message name="findDocumentsResponse">
+    <wsdl:part name="parameters" element="tns:findDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidArgumentFault">
+    <wsdl:part name="InvalidArgumentFault" element="tns:InvalidArgument" />
+  </wsdl:message>
+  <wsdl:portType name="Documents">
+    <wsdl:operation name="getMultipleDocumentsViewKey">
+      <wsdl:input name="getMultipleDocumentsViewKey" message="tns:getMultipleDocumentsViewKey" />
+      <wsdl:output name="getMultipleDocumentsViewKeyResponse" message="tns:getMultipleDocumentsViewKeyResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <wsdl:input name="findDocuments" message="tns:findDocuments" />
+      <wsdl:output name="findDocumentsResponse" message="tns:findDocumentsResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getSourceDocument">
+      <wsdl:input name="getSourceDocument" message="tns:getSourceDocument" />
+      <wsdl:output name="getSourceDocumentResponse" message="tns:getSourceDocumentResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocument">
+      <wsdl:input name="getDocument" message="tns:getDocument" />
+      <wsdl:output name="getDocumentResponse" message="tns:getDocumentResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <wsdl:input name="deleteDocument" message="tns:deleteDocument" />
+      <wsdl:output name="deleteDocumentResponse" message="tns:deleteDocumentResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InputOutputFault" message="tns:InputOutputFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContentAsPdf">
+      <wsdl:input name="getDocumentContentAsPdf" message="tns:getDocumentContentAsPdf" />
+      <wsdl:output name="getDocumentContentAsPdfResponse" message="tns:getDocumentContentAsPdfResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InputOutputFault" message="tns:InputOutputFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentViewKey">
+      <wsdl:input name="getDocumentViewKey" message="tns:getDocumentViewKey" />
+      <wsdl:output name="getDocumentViewKeyResponse" message="tns:getDocumentViewKeyResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="setSourceDocument">
+      <wsdl:input name="setSourceDocument" message="tns:setSourceDocument" />
+      <wsdl:output name="setSourceDocumentResponse" message="tns:setSourceDocumentResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContent">
+      <wsdl:input name="getDocumentContent" message="tns:getDocumentContent" />
+      <wsdl:output name="getDocumentContentResponse" message="tns:getDocumentContentResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InputOutputFault" message="tns:InputOutputFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentArchiveUserName">
+      <wsdl:input name="getDocumentArchiveUserName" message="tns:getDocumentArchiveUserName" />
+      <wsdl:output name="getDocumentArchiveUserNameResponse" message="tns:getDocumentArchiveUserNameResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContentAsImage">
+      <wsdl:input name="getDocumentContentAsImage" message="tns:getDocumentContentAsImage" />
+      <wsdl:output name="getDocumentContentAsImageResponse" message="tns:getDocumentContentAsImageResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InputOutputFault" message="tns:InputOutputFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+    <wsdl:operation name="canConvertDocumentToPdf">
+      <wsdl:input name="canConvertDocumentToPdf" message="tns:canConvertDocumentToPdf" />
+      <wsdl:output name="canConvertDocumentToPdfResponse" message="tns:canConvertDocumentToPdfResponse" />
+      <wsdl:fault name="AuthorizationFault" message="tns:AuthorizationFault" />
+      <wsdl:fault name="InvalidArgumentFault" message="tns:InvalidArgumentFault" />
+      <wsdl:fault name="AuthenticationFault" message="tns:AuthenticationFault" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DocumentsServiceSoapBinding" type="tns:Documents">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getMultipleDocumentsViewKey">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getMultipleDocumentsViewKey">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getMultipleDocumentsViewKeyResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findDocuments">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="findDocuments">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="findDocumentsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSourceDocument">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getSourceDocument">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getSourceDocumentResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocument">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocument">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDocument">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="deleteDocument">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="deleteDocumentResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InputOutputFault">
+        <soap12:fault use="literal" name="InputOutputFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContentAsPdf">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocumentContentAsPdf">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentContentAsPdfResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InputOutputFault">
+        <soap12:fault use="literal" name="InputOutputFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentViewKey">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocumentViewKey">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentViewKeyResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setSourceDocument">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="setSourceDocument">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="setSourceDocumentResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContent">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocumentContent">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentContentResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InputOutputFault">
+        <soap12:fault use="literal" name="InputOutputFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentArchiveUserName">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocumentArchiveUserName">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentArchiveUserNameResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDocumentContentAsImage">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="getDocumentContentAsImage">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDocumentContentAsImageResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InputOutputFault">
+        <soap12:fault use="literal" name="InputOutputFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="canConvertDocumentToPdf">
+      <soap12:operation soapAction="" style="document" />
+      <wsdl:input name="canConvertDocumentToPdf">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="canConvertDocumentToPdfResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="AuthorizationFault">
+        <soap12:fault use="literal" name="AuthorizationFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidArgumentFault">
+        <soap12:fault use="literal" name="InvalidArgumentFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="AuthenticationFault">
+        <soap12:fault use="literal" name="AuthenticationFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocumentsService">
+    <wsdl:port name="DocumentsPort" binding="tns:DocumentsServiceSoapBinding">
+      <soap12:address location="https://poc.virtualpostman.co.za/external/webservices/SOAP/Documents-v1.5" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
